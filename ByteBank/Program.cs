@@ -10,7 +10,19 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            M1();
+            //M1();
+
+            try
+            {
+
+                ContaCorrente conta = new ContaCorrente(123, 0);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("Ocorreu um erro de ArgumentException.");
+                Console.WriteLine(ex.Message);
+            }
+
 
             Console.ReadLine();
         }
@@ -42,9 +54,10 @@ namespace ByteBank
             {
                 M3();
             }
-            catch (DivideByZeroException)
+            catch (DivideByZeroException ex)
             {
                 Console.WriteLine("Msg capturada em M2");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -55,10 +68,13 @@ namespace ByteBank
                 int divisor = 0;
                 int resultado = 1 / divisor;
             }
-            catch (DivideByZeroException)
+            catch (DivideByZeroException ex)
             {
 
                 Console.WriteLine("mensagem capturada em M3");
+                Console.WriteLine(ex.Message);
+
+                throw;
             }
 
            
